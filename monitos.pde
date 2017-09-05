@@ -906,7 +906,7 @@ void dibujar()
     
      if(x2[i]>=ancho)
       dx2[i]= -dx2[i];
-    if(x2[i]<=x0)
+    if(x2[i]<=x)
       dx2[i] = -dx2[i];
     if(y2[i]>=alto)
       dy2[i]= -dy2[i];
