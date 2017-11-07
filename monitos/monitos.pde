@@ -1,5 +1,6 @@
 //import ddf.minim.*;
 PFont f;
+int lastChange;
 int fase;  // 0= inicio,1=seleccion de monitos, 2= pelea, 3= finde juego
 int Cjugador1;
 int Cjugador2;
@@ -267,6 +268,8 @@ void mouseClicked()
       fondo=Cjugador1;
       
       fase = 2;
+       lastChange = millis();
+      fondo = (int)random(5)*2;
        
      break;
      
@@ -291,7 +294,19 @@ void mouseClicked()
 
    void dibujarFondo(){
       
-      
+       if (millis() - lastChange > 100 && (isMoving == 1 || isMoving == 2))
+      {
+        if (fondo%2 == 0)
+        fondo++;
+        else
+        fondo--;
+        lastChange = millis ();
+      }
+      else if(isMoving == 0)
+      {
+        if (fondo%2 != 0)
+        fondo--;
+      }
       switch(fondo){
         case 0:
         fondo1.resize(800,530);
